@@ -21,6 +21,9 @@ p_color_queue_t p_color_queue_mold;
 p_color_queue_t p_color_queue_pieces_good;
 p_color_queue_t p_color_queue_pieces_bad;
 
+int materials_count[COLOR_N];
+int mold_count;
+
 /******************************/
 /* Local functions prototypes */
 /******************************/
@@ -57,6 +60,16 @@ int main (int argc, char **argv) {
 /* Factory setup procedure */
 int factory_setup( void ){
 
+    /* Create all color queues */
+    int total_material_count = 0;
+    for(uint16_t color_id=0; color_id<COLOR_N; color_id++){
+        if(FAIL == color_queue_init(&(p_color_queue_materials[color_id]), materials_count[color_id]) return FAIL;
+        total_material_count += materials_count[color_id];
+    }
+
+    if(FAIL == color_queue_init(&p_color_queue_mold, mold_count) return FAIL;
+    if(FAIL == color_queue_init(&p_color_queue_pieces_good, total_material_count) return FAIL;
+    if(FAIL == color_queue_init(&p_color_queue_pieces_bad, total_material_count) return FAIL;
 }
 
 /* Print factory output */
