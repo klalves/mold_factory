@@ -1,5 +1,5 @@
 /*************************************************************
- * Generic queue model developed in the context
+ * Color queue model developed in the context
  * of the PAA Discipline
  *************************************************************/
 
@@ -16,19 +16,19 @@
 #define FAIL 1
 #endif
 
-typedef struct fila_t *pFila, **ppFila;
+typedef struct color_queue_t *p_color_queue_t, **pp_color_queue_t;
 
 
 /**********************/
 /* Creation operation */
 /**********************/
-int init(ppFila pp_fila, int tam_fila, int tam_max_item);
+int color_queue_init(pp_color_queue_t pp_color_queue, int queue_size);
 
 
 /*************************/
 /* Destruction operation */
 /*************************/
-int destroy(ppFila pp_fila);
+int color_queue_destroy(pp_color_queue_t pp_color_queue);
 
 
 /*********************/
@@ -39,6 +39,6 @@ int destroy(ppFila pp_fila);
 /***************************/
 /* Manipulation operations */
 /***************************/
-int enqueue(pFila p_fila, void * p_dado, int tipo_dado, int tam_dado);
-int dequeue(pFila p_fila, void ** pp_dado, int * p_tipo_dado);
+int color_queue_enqueue(p_color_queue_t p_color_queue, color_t color);
+int color_queue_dequeue(p_color_queue_t p_color_queue, color_t * p_color);
 
